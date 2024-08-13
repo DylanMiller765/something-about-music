@@ -17,9 +17,12 @@
   "description": "",
   "dependencies": {
     "disqus-react": "^1.1.5",
+    "formidable": "^3.5.1",
     "framer-motion": "^11.3.24",
     "gray-matter": "^4.0.3",
+    "nanoid": "^5.0.7",
     "next": "^14.2.5",
+    "next-auth": "^4.24.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",

@@ -8,5 +8,8 @@
       },
     ],
     formats: ['image/webp'],
-  },
+    },
+    env: {
+        SECURE_POST_TOKEN: process.env.SECURE_POST_TOKEN,
+    },
 }
