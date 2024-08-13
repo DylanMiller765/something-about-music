@@ -8,11 +8,14 @@ const { publicRuntimeConfig } = getConfig()
 export default function SecureCreatePost() {
     const [formData, setFormData] = useState({
         title: '',
+        releaseDate: '',
+        label: '',
         date: '',
         excerpt: '',
         rating: '',
         genres: '',
         content: '',
+        trackList: '',
     })
     const [coverImage, setCoverImage] = useState(null)
     const [error, setError] = useState('')
@@ -122,6 +125,30 @@ export default function SecureCreatePost() {
                         />
                     </div>
                     <div>
+                        <label htmlFor="releaseDate" className="block mb-2">Release Date</label>
+                        <input
+                            type="text"
+                            id="releaseDate"
+                            name="releaseDate"
+                            value={formData.releaseDate}
+                            onChange={handleChange}
+                            required
+                            className="w-full p-2 border border-gray-300 rounded text-black"
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="label" className="block mb-2">Label</label>
+                        <input
+                            type="text"
+                            id="label"
+                            name="label"
+                            value={formData.label}
+                            onChange={handleChange}
+                            required
+                            className="w-full p-2 border border-gray-300 rounded text-black"
+                        />
+                    </div>
+                    <div>
                         <label htmlFor="date" className="block mb-2">Date</label>
                         <input
                             type="date"
@@ -181,6 +208,18 @@ export default function SecureCreatePost() {
                             required
                             className="w-full p-2 border border-gray-300 rounded text-black"
                             rows="10"
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="trackList" className="block mb-2">Tracklist (comma-separated)</label>
+                        <input
+                            type="text"
+                            id="trackList"
+                            name="trackList"
+                            value={formData.trackList}
+                            onChange={handleChange}
+                            required
+                            className="w-full p-2 border border-gray-300 rounded text-black"
                         />
                     </div>
                     <div>

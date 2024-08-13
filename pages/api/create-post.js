@@ -37,11 +37,14 @@ export default async function handler(req, res) {
 
             // Extract the first element from each field array
             const title = fields.title[0];
+            const releaseDate = fields.releaseDate[0];
+            const label = fields.label[0];
             const date = fields.date[0];
             const excerpt = fields.excerpt[0];
             const rating = fields.rating[0];
             const genres = fields.genres[0];
             const content = fields.content[0];
+            const trackList = fields.trackList[0];
 
             if (!title || typeof title !== 'string') {
                 throw new Error('Invalid or missing title');
@@ -63,11 +66,15 @@ export default async function handler(req, res) {
             // Create the markdown content
             const markdown = `---
 title: '${title}'
+releaseDate: '${releaseDate}'
+label: '${label}'
 date: '${date}'
 excerpt: '${excerpt}'
 coverImage: '${coverImageFilename}'
 rating: ${rating}
 genres: ${JSON.stringify(genres.split(',').map(g => g.trim()))}
+trackList: ${JSON.stringify(trackList.split(',').map(g => g.trim()))}
+
 ---
 ${content}`;
 

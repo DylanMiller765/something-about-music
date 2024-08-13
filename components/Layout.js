@@ -30,7 +30,7 @@ export default function Layout({ children }) {
 
       <footer className="bg-gray-800 text-white py-8">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2023 Something about music. All rights reserved.</p>
+          <p>&copy; 2023 Something about music. My amazing boyfriend built this for me. All rights reserved.</p>
         </div>
       </footer>
     </div>
