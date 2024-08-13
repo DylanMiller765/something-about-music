@@ -3,6 +3,8 @@ title: 'The Sundays: Reading, Writing and Arithmetic'
 date: '2023-08-05'
 excerpt: 'A look back at the debut album from The Sundays'
 coverImage: 'RWH.jpeg'
+rating: 9.2
+genres: ['Garage Rock', 'Blues Rock', 'Alternative']
 ---
 
 # The Sundays: Reading, Writing and Arithmetic

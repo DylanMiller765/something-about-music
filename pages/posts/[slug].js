@@ -2,73 +2,89 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Layout from '../../components/Layout'
 import { getPostBySlug, getAllPosts } from '../../lib/posts'
-import ReactMarkdown from 'react-markdown'
-import YouTubeEmbed from '../../components/YouTubeEmbed'
-import SpotifyEmbed from '../../components/SpotifyEmbed'
-import Comments from '../../components/Comments'
-import ShareButtons from '../../components/ShareButtons'
 
-
-export default function Post({ post }) {
-    if (!post) {
-      console.error('Post data is undefined');
-      return <div>Error: Post not found</div>;
-    }
-  
-    console.log('Cover Image:', post.coverImage);
+export default function Review({ post }) {
+  if (!post) {
+    return <div>Error: Post not found</div>
+  }
 
   return (
     <Layout>
       <Head>
-        <title>{post.title} | Something About Music</title>
+        <title>{post.title || 'Untitled'} | Something about music</title>
       </Head>
+      
+      <article className="container mx-auto px-4 py-8">
+        <div className="bg-background-card rounded-lg shadow-lg overflow-hidden">
+          <div className="md:flex">
+            <div className="md:flex-shrink-0 p-6">
+              {post.coverImage ? (
+                <Image
+                  src={`/images/${post.coverImage}`}
+                  alt={`${post.title || 'Album'} cover`}
+                  width={300}
+                  height={300}
+                  className="rounded-lg shadow-md"
+                />
+              ) : (
+                <div className="w-[300px] h-[300px] bg-gray-300 flex items-center justify-center text-gray-500">
+                  No Image Available
+                </div>
+              )}
+            </div>
+            <div className="p-6 md:p-8">
+              <h1 className="text-4xl font-bold text-text-accent mb-2">{post.title || 'Untitled'}</h1>
+              <p className="text-text-secondary mb-1">Released: {post.releaseDate || 'Unknown'}</p>
+              <p className="text-text-secondary mb-1">Label: {post.label || 'Unknown'}</p>
+              <p className="text-text-secondary mb-2">
+                Genre: {Array.isArray(post.genres) ? post.genres.join(', ') : 'Unknown'}
+              </p>
+              <p className="text-text-accent font-bold text-xl">Rating: {post.rating || 'N/A'} / 10</p>
+            </div>
+          </div>
+        </div>
 
-      <article className="prose lg:prose-xl mx-auto text-white">
-        {post.coverImage && (
-          <div className="relative w-full h-64 mb-6">
-            <Image
-              src={`/images/${post.coverImage}`}
-              alt={post.title}
-              layout="fill"
-              objectFit="cover"
-              className="rounded"
-            />
+        <div className="mt-8 prose prose-invert max-w-none">
+          <div dangerouslySetInnerHTML={{ __html: post.content || 'No content available.' }} />
+        </div>
+
+        {post.trackList && post.trackList.length > 0 && (
+          <div className="mt-8 bg-background-card rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl font-bold text-text-accent mb-4">Track List:</h2>
+            <ol className="list-decimal list-inside">
+              {post.trackList.map((track, index) => (
+                <li key={index} className="text-text-primary mb-2">{track}</li>
+              ))}
+            </ol>
           </div>
         )}
-        <h1 className="text-4xl font-bold mb-4 text-red-600">{post.title}</h1>
-        <ReactMarkdown
-          components={{
-            YouTube: YouTubeEmbed,
-            Spotify: SpotifyEmbed,
-          }}
-        >
-          {post.content}
-        </ReactMarkdown>
       </article>
-
-      <ShareButtons url={`https://somethingaboutmusic.com/posts/${post.slug}`} title={post.title} />
-      <Comments post={post} />
     </Layout>
   )
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(['slug'])
+  const posts = await getAllPosts(['slug'])
   return {
-    paths: posts.map((post) => {
-      return {
-        params: {
-          slug: post.slug,
-        },
-      }
-    }),
+    paths: posts.map((post) => ({
+      params: { slug: post.slug },
+    })),
     fallback: false,
   }
 }
 
 export async function getStaticProps({ params }) {
-  const post = getPostBySlug(params.slug, ['title', 'date', 'slug', 'content', 'coverImage'])
-  console.log('Post data:', post);  // Add this line
+  const post = await getPostBySlug(params.slug, [
+    'title',
+    'releaseDate',
+    'label',
+    'genres',
+    'rating',
+    'content',
+    'coverImage',
+    'trackList',
+  ])
+  
   return {
     props: {
       post,
