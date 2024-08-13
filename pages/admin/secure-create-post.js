@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Layout from '../../components/Layout'
+import getConfig from 'next/config'
+
+const { publicRuntimeConfig } = getConfig()
 
 export default function SecureCreatePost() {
     const [formData, setFormData] = useState({
@@ -13,15 +16,26 @@ export default function SecureCreatePost() {
     })
     const [coverImage, setCoverImage] = useState(null)
     const [error, setError] = useState('')
-    const [token, setToken] = useState('')
+    const [isAuthorized, setIsAuthorized] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const router = useRouter()
 
     useEffect(() => {
-        const urlToken = router.query.token
-        if (urlToken) {
-            setToken(urlToken)
+        if (router.isReady) {
+            const urlToken = router.query.token
+            console.log("URL Token:", urlToken)
+            console.log("ENV Token:", publicRuntimeConfig.NEXT_PUBLIC_SECURE_POST_TOKEN)
+            if (urlToken === publicRuntimeConfig.NEXT_PUBLIC_SECURE_POST_TOKEN) {
+                console.log("Tokens match, setting authorized to true")
+                setIsAuthorized(true)
+            } else {
+                console.log("Tokens do not match, setting authorized to false")
+                setIsAuthorized(false)
+                router.push('/')
+            }
+            setIsLoading(false)
         }
-    }, [router.query.token])
+    }, [router.isReady, router.query.token])
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -51,7 +65,7 @@ export default function SecureCreatePost() {
             const response = await fetch('/api/create-post', {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${publicRuntimeConfig.NEXT_PUBLIC_SECURE_POST_TOKEN}`
                 },
                 body: formDataToSend,
             })
@@ -64,7 +78,7 @@ export default function SecureCreatePost() {
                 data = JSON.parse(responseText);
             } catch (e) {
                 console.error('Error parsing response:', e);
-                setError('Unexpected server response');
+                setError('Unexpected server response: ' + responseText);
                 return;
             }
 
@@ -76,12 +90,17 @@ export default function SecureCreatePost() {
             }
         } catch (error) {
             console.error('Error:', error);
-            setError('An error occurred while creating the post.')
+            setError('An error occurred while creating the post: ' + error.message)
         }
     }
 
-    if (!token) {
-        return <div>Unauthorized access</div>
+
+    if (isLoading) {
+        return <div>Loading...</div>
+    }
+
+    if (!isAuthorized) {
+        return <div>Unauthorized access. Redirecting...</div>
     }
 
     return (

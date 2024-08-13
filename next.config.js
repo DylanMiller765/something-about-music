@@ -1,15 +1,15 @@
 ﻿module.exports = {
-  reactStrictMode: true,
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'http',
-        hostname: 'localhost',
-      },
-    ],
-    formats: ['image/webp'],
+    reactStrictMode: true,
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'http',
+                hostname: 'localhost',
+            },
+        ],
+        formats: ['image/webp'],
     },
-    env: {
-        SECURE_POST_TOKEN: process.env.SECURE_POST_TOKEN,
+    publicRuntimeConfig: {
+        NEXT_PUBLIC_SECURE_POST_TOKEN: process.env.NEXT_PUBLIC_SECURE_POST_TOKEN,
     },
 }
