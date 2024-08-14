@@ -21,7 +21,7 @@ export default function PlaylistsPage({ playlists }) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const playlists = await getPlaylists()
   return {
     props: {
