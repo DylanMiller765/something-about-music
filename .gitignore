@@ -2,5 +2,9 @@ node_modules
 .next
 .DS_Store
 .env
+<<<<<<< HEAD
 .vs/
 .env.local
+=======
+.env.local
+>>>>>>> de7b39a32d71676f6dd5ce41a69e6444681355c2

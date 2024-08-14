@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Layout from '../../components/Layout'
 import { getPostBySlug, getAllPosts } from '../../lib/posts'
+import SpotifyEmbed from '../../components/SpotifyEmbed'
 
 export default function Review({ post }) {
   if (!post) {
@@ -13,7 +14,7 @@ export default function Review({ post }) {
       <Head>
         <title>{post.title || 'Untitled'} | Something about music</title>
       </Head>
-      
+
       <article className="container mx-auto px-4 py-8">
         <div className="bg-background-card rounded-lg shadow-lg overflow-hidden">
           <div className="md:flex">
@@ -48,14 +49,10 @@ export default function Review({ post }) {
           <div dangerouslySetInnerHTML={{ __html: post.content || 'No content available.' }} />
         </div>
 
-        {post.trackList && post.trackList.length > 0 && (
+        {post.spotifyUri && (
           <div className="mt-8 bg-background-card rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-bold text-text-accent mb-4">Track List:</h2>
-            <ol className="list-decimal list-inside">
-              {post.trackList.map((track, index) => (
-                <li key={index} className="text-text-primary mb-2">{track}</li>
-              ))}
-            </ol>
+            <h2 className="text-2xl font-bold text-text-accent mb-4">Listen on Spotify:</h2>
+            <SpotifyEmbed uri={post.spotifyUri} />
           </div>
         )}
       </article>
@@ -82,9 +79,9 @@ export async function getStaticProps({ params }) {
     'rating',
     'content',
     'coverImage',
-    'trackList',
+    'spotifyUri',
   ])
-  
+
   return {
     props: {
       post,
