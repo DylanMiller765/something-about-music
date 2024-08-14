@@ -195,6 +195,7 @@ export default function SecureCreatePost() {
                             value={formData.genres}
                             onChange={handleChange}
                             required
+                            placeholder="e.g. Rock,Indie"
                             className="w-full p-2 border border-gray-300 rounded text-black"
                         />
                     </div>
@@ -218,7 +219,7 @@ export default function SecureCreatePost() {
                             name="spotifyUri"
                             value={formData.spotifyUri}
                             onChange={handleChange}
-                            placeholder="e.g. album:0bQglEvsHphrS19FGODEGo"
+                            placeholder="e.g. spotify:album:0bQglEvsHphrS19FGODEGo"
                             className="w-full p-2 border border-gray-300 rounded text-black"
                         />
                     </div>

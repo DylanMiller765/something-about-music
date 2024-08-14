@@ -16,8 +16,8 @@ export default function Layout({ children }) {
             <ul className="flex justify-center space-x-6">
               <li><Link href="/" className="hover:text-red-400 transition duration-300">HOME</Link></li>
               <li><Link href="/reviews" className="hover:text-red-400 transition duration-300">REVIEWS</Link></li>
-              <li><Link href="/artists" className="hover:text-red-400 transition duration-300">ARTISTS</Link></li>
-              <li><Link href="/features" className="hover:text-red-400 transition duration-300">FEATURES</Link></li>
+              <li><Link href="/playlists" className="hover:text-red-400 transition duration-300">PLAYLISTS</Link></li>
+              <li><Link href="/gallery" className="hover:text-red-400 transition duration-300">GALLERY</Link></li>
               <li><Link href="/about" className="hover:text-red-400 transition duration-300">ABOUT</Link></li>
             </ul>
           </div>
@@ -32,7 +32,7 @@ export default function Layout({ children }) {
 
       <footer className="bg-gray-900 text-white py-8">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2023 Velvet Chords. All rights reserved.</p>
+          <p>&copy; 2024 Something About Music. All rights reserved.</p>
         </div>
       </footer>
     </div>
