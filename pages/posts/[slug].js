@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Layout from '../../components/Layout'
 import { getPostBySlug, getAllPosts } from '../../lib/posts'
 import SpotifyEmbed from '../../components/SpotifyEmbed'
+import Layout from '../../components/Layout'
 
 export default function Review({ post }) {
   if (!post) {
@@ -10,11 +10,6 @@ export default function Review({ post }) {
   }
 
   return (
-    <Layout>
-      <Head>
-        <title>{post.title || 'Untitled'} | Something about music</title>
-      </Head>
-
       <article className="container mx-auto px-4 py-8">
         <div className="bg-background-card rounded-lg shadow-lg overflow-hidden">
           <div className="md:flex">
@@ -56,7 +51,7 @@ export default function Review({ post }) {
           </div>
         )}
       </article>
-    </Layout>
+    
   )
 }
 

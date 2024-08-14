@@ -107,7 +107,7 @@ export default function SecureCreatePost() {
     }
 
     return (
-        <Layout>
+        
             <div className="container mx-auto px-4 py-8">
                 <h1 className="text-3xl font-bold mb-8">Create New Post</h1>
                 {error && <p className="text-red-500 mb-4">{error}</p>}
@@ -212,8 +212,8 @@ export default function SecureCreatePost() {
                         />
                     </div>
                     <div>
-                        <label htmlFor="spotifyUri" className="block mb-2">Spotify URI</label>
-                            <input
+                        <label htmlFor="spotifyUri" className="block mb-2">Spotify Album URI</label>
+                        <input
                             type="text"
                             id="spotifyUri"
                             name="spotifyUri"
@@ -239,6 +239,6 @@ export default function SecureCreatePost() {
                     </button>
                 </form>
             </div>
-        </Layout>
+        
     )
 }

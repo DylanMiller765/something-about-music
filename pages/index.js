@@ -1,12 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import Layout from '../components/Layout'
 import { getPosts } from '../lib/posts'
 
 export default function Home({ featuredReview, recentReviews }) {
   return (
-    <Layout>
+    <>
       <Head>
         <title>Something About Music</title>
         <link rel="icon" href="/favicon.ico" />
@@ -99,7 +98,7 @@ export default function Home({ featuredReview, recentReviews }) {
           </Link>
         </div>
       </main>
-    </Layout>
+    </>
   )
 }
 

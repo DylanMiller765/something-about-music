@@ -9,7 +9,8 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Roboto', 'sans-serif'],
-        title: ['Bangers', 'cursive'],
+        title: ['Rock Salt', 'cursive'],
+        accent: ['Bangers', 'cursive'],
       },
       colors: {
         primary: {
@@ -43,6 +44,9 @@ module.exports = {
       gradientColorStops: {
         'red-900': '#7f1d1d',
         'red-700': '#b91c1c',
+      },
+      backgroundImage: {
+        'musical-pattern': "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='100' height='100'%3E%3Cpath d='M20,80 Q40,70 50,80 T80,80' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='2'%3E%3Canimate attributeName='d' dur='5s' repeatCount='indefinite' values='M20,80 Q40,70 50,80 T80,80;M20,80 Q40,90 50,80 T80,80;M20,80 Q40,70 50,80 T80,80'/%3E%3C/animate%3E%3C/path%3E%3Cpath d='M30,20 L30,80' stroke='rgba(255,255,255,0.1)' stroke-width='2'%3E%3Canimate attributeName='d' dur='3s' repeatCount='indefinite' values='M30,20 L30,80;M30,20 L30,75;M30,20 L30,80'/%3E%3C/animate%3E%3C/path%3E%3Ccircle cx='70' cy='50' r='15' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='2'%3E%3Canimate attributeName='r' dur='4s' repeatCount='indefinite' values='15;20;15'/%3E%3C/circle%3E%3C/svg%3E\")",
       },
     },
   },

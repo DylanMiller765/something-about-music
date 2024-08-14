@@ -3,75 +3,149 @@
 @import 'tailwindcss/utilities';
 
 body {
-  @apply bg-gray-900 text-white;
+  background-color: theme('colors.background.dark');
+  color: theme('colors.text.primary');
   font-family: 'Roboto', sans-serif;
 }
 
 .title-font {
+  font-family: 'Rock Salt', cursive;
+}
+
+.accent-font {
   font-family: 'Bangers', cursive;
 }
 
 .prose {
-  @apply text-white;
+  color: theme('colors.text.primary');
 }
 
 .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
-  @apply text-red-500;
+  color: theme('colors.text.accent');
   font-family: 'Bangers', cursive;
 }
 
 .prose strong {
-  @apply text-red-400;
+  color: theme('colors.red.400');
 }
 
 .prose a {
-  @apply text-blue-400;
+  color: theme('colors.blue.400');
 }
 
 .prose ul, .prose ol {
-  @apply text-white;
+  color: theme('colors.text.primary');
 }
 
 /* Custom styles for the blog post cards */
 .blog-card {
-  @apply bg-gray-800 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:shadow-2xl;
+  background-color: theme('colors.background.card');
+  border-radius: theme('borderRadius.lg');
+  overflow: hidden;
+  box-shadow: theme('boxShadow.lg');
+  transform: translateZ(0);
+  transition: transform 300ms, box-shadow 300ms;
+}
+
+.blog-card:hover {
+  box-shadow: theme('boxShadow.2xl');
 }
 
 .blog-card-image {
-  @apply transition-transform duration-300 transform hover:scale-105;
+  transition: transform 300ms;
+}
+
+.blog-card:hover .blog-card-image {
+  transform: scale(1.05);
 }
 
 .blog-card-content {
-  @apply p-6 bg-gradient-to-b from-gray-800 to-gray-700;
+  padding: theme('spacing.6');
+  background-image: linear-gradient(to bottom, theme('colors.gray.800'), theme('colors.gray.700'));
 }
 
 .blog-card-title {
-  @apply text-2xl font-bold text-red-500 mb-2;
+  font-size: theme('fontSize.2xl');
+  font-weight: theme('fontWeight.bold');
+  color: theme('colors.text.accent');
+  margin-bottom: theme('spacing.2');
+  font-family: 'Bangers', cursive;
 }
 
 .blog-card-excerpt {
-  @apply text-gray-300 mb-4;
+  color: theme('colors.text.secondary');
+  margin-bottom: theme('spacing.4');
 }
 
 .blog-card-tag {
-  @apply inline-block bg-red-800 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2;
+  display: inline-block;
+  background-color: theme('colors.red.800');
+  border-radius: theme('borderRadius.full');
+  padding: theme('spacing.1') theme('spacing.3');
+  font-size: theme('fontSize.sm');
+  font-weight: theme('fontWeight.semibold');
+  color: theme('colors.text.primary');
+  margin-right: theme('spacing.2');
+  margin-bottom: theme('spacing.2');
 }
 
 /* Header styles */
 .site-header {
-  @apply bg-red-700 text-white py-4;
+  background-image: linear-gradient(to right, theme('colors.red.900'), theme('colors.red.700')), theme('backgroundImage.musical-pattern');
+  background-size: cover;
+  background-position: center;
+  color: theme('colors.text.primary');
+  padding-top: theme('spacing.4');
+  padding-bottom: theme('spacing.4');
+  position: relative;
+}
+
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: theme('backgroundImage.musical-pattern');
+  animation: moveBackground 20s linear infinite;
+  opacity: 0.3;
 }
 
 .site-title {
-  @apply text-4xl font-bold text-center;
-  font-family: 'Bangers', cursive;
+  font-size: theme('fontSize.4xl');
+  font-weight: theme('fontWeight.bold');
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  font-family: 'Rock Salt', cursive;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
-.nav-link {
-  @apply hover:text-red-200 transition duration-300;
+.nav-link:hover {
+  color: theme('colors.red.200');
+  transition: color 300ms;
 }
 
 /* Button styles */
 .btn {
-  @apply bg-red-600 text-white font-bold py-2 px-4 rounded hover:bg-red-700 transition duration-300;
+  background-color: theme('colors.primary.DEFAULT');
+  color: theme('colors.text.primary');
+  font-weight: theme('fontWeight.bold');
+  padding: theme('spacing.2') theme('spacing.4');
+  border-radius: theme('borderRadius.DEFAULT');
+  transition: background-color 300ms;
+}
+
+.btn:hover {
+  background-color: theme('colors.primary.dark');
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
 }

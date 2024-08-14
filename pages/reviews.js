@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import Layout from '../components/Layout'
 import { getPosts } from '../lib/posts'
 
 export default function Reviews({ posts }) {
@@ -22,38 +22,48 @@ export default function Reviews({ posts }) {
     }
   }, [posts, filter, sortBy])
 
-  return (
-    <Layout>
-      <h1 className="text-4xl font-bold mb-8 text-red-600">Album Reviews</h1>
-      
-      <div className="mb-8 flex justify-between items-center">
-        <div>
-          <label htmlFor="filter" className="mr-2 text-white">Filter by genre:</label>
-          <select 
-            id="filter" 
-            value={filter} 
-            onChange={(e) => setFilter(e.target.value)}
-            className="bg-gray-800 text-white p-2 rounded"
-          >
-            <option value="all">All</option>
-            {/* Add your genre options here */}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="sort" className="mr-2 text-white">Sort by:</label>
-          <select 
-            id="sort" 
-            value={sortBy} 
-            onChange={(e) => setSortBy(e.target.value)}
-            className="bg-gray-800 text-white p-2 rounded"
-          >
-            <option value="date">Date</option>
-            <option value="rating">Rating</option>
-          </select>
-        </div>
-      </div>
+  // Extract unique genres from all posts
+  const allGenres = [...new Set(posts.flatMap(post => post.genres || []))]
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+  return (
+    <>
+      <Head>
+        <title>Album Reviews | Something About Music</title>
+      </Head>
+
+      <main className="container mx-auto px-4 py-8">
+        <h1 className="text-4xl font-bold mb-8 text-red-600">Album Reviews</h1>
+        
+        <div className="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center">
+          <div className="mb-4 sm:mb-0">
+            <label htmlFor="filter" className="mr-2 text-white">Filter by genre:</label>
+            <select 
+              id="filter" 
+              value={filter} 
+              onChange={(e) => setFilter(e.target.value)}
+              className="bg-gray-800 text-white p-2 rounded"
+            >
+              <option value="all">All</option>
+              {allGenres.map(genre => (
+                <option key={genre} value={genre}>{genre}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label htmlFor="sort" className="mr-2 text-white">Sort by:</label>
+            <select 
+              id="sort" 
+              value={sortBy} 
+              onChange={(e) => setSortBy(e.target.value)}
+              className="bg-gray-800 text-white p-2 rounded"
+            >
+              <option value="date">Date</option>
+              <option value="rating">Rating</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           {filteredPosts.map((post) => (
             <Link key={post.slug} href={`/posts/${post.slug}`} className="block">
               <div className="bg-gray-900 rounded-lg overflow-hidden hover:shadow-lg transition duration-300 border border-red-600 hover:border-red-400 h-full">
@@ -92,12 +102,13 @@ export default function Reviews({ posts }) {
           ))}
         </div>
 
-      {filteredPosts.length === 0 && (
-        <div className="text-center text-gray-400 mt-8">
-          No reviews found. Try changing the filter or adding more reviews.
-        </div>
-      )}
-    </Layout>
+        {filteredPosts.length === 0 && (
+          <div className="text-center text-gray-400 mt-8">
+            No reviews found. Try changing the filter or adding more reviews.
+          </div>
+        )}
+      </main>
+    </>
   )
 }
 
