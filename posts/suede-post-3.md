@@ -2,6 +2,7 @@
 title: 'Suede - Coming Up'
 releaseDate: 'September 2, 1996'
 label: 'Nude Records'
+date: '2024-08-13'
 genres: ['Britpop', 'Glam Rock']
 rating: 9.3
 coverImage: 'coming-up.jpeg'
