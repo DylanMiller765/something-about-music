@@ -44,7 +44,7 @@ export default async function handler(req, res) {
             const rating = fields.rating[0];
             const genres = fields.genres[0];
             const content = fields.content[0];
-            const trackList = fields.trackList[0];
+            const spotifyUri = fields.spotifyUri[0];
 
             if (!title || typeof title !== 'string') {
                 throw new Error('Invalid or missing title');
@@ -73,10 +73,11 @@ excerpt: '${excerpt}'
 coverImage: '${coverImageFilename}'
 rating: ${rating}
 genres: ${JSON.stringify(genres.split(',').map(g => g.trim()))}
-trackList: ${JSON.stringify(trackList.split(',').map(g => g.trim()))}
-
+spotifyUri: '${spotifyUri}'
 ---
-${content}`;
+
+${content.replace(/'/g, "''").trim()}
+`;
 
             // Save the markdown file
             const postPath = path.join(postsDirectory, `${slug}.md`);

@@ -1,3 +1,5 @@
+const { color } = require('framer-motion');
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -16,18 +18,31 @@ module.exports = {
         },
         secondary: '#000000',
         background: {
-          dark: '#1A202C', // dark gray for main background
-          card: '#2D3748', // slightly lighter gray for card backgrounds
+          dark: '#161a1d', // black for main background
+          card: '#161a1d', // very dark blue for card backgrounds
         },
         text: {
           primary: '#FFFFFF',
           secondary: '#A0AEC0',
-          accent: '#FEB2B2', // light red for accents
+          accent: '#FF0000', // red for accents
+        },
+        red: {
+          500: '#FF0000', // Bright red for borders and accents
+          700: '#b91c1c', // Darker red for hover states
+        },
+        yellow: {
+          500: '#EAB308', // Yellow for ratings
+        },
+        gray: {
+          300: '#D1D5DB', // Light gray for some text
+          400: '#9CA3AF', // Medium gray for secondary text
+          800: '#1F2937', // Dark gray for genre tags
+          900: '#161a1d', // Very dark gray, almost black, for card backgrounds
         },
       },
       gradientColorStops: {
-        'red-800': '#9B2C2C',
-        'red-600': '#E53E3E',
+        'red-900': '#7f1d1d',
+        'red-700': '#b91c1c',
       },
     },
   },

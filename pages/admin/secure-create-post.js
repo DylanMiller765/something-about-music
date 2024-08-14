@@ -211,14 +211,14 @@ export default function SecureCreatePost() {
                         />
                     </div>
                     <div>
-                        <label htmlFor="trackList" className="block mb-2">Tracklist (comma-separated)</label>
-                        <input
+                        <label htmlFor="spotifyUri" className="block mb-2">Spotify URI</label>
+                            <input
                             type="text"
-                            id="trackList"
-                            name="trackList"
-                            value={formData.trackList}
+                            id="spotifyUri"
+                            name="spotifyUri"
+                            value={formData.spotifyUri}
                             onChange={handleChange}
-                            required
+                            placeholder="e.g. album:0bQglEvsHphrS19FGODEGo"
                             className="w-full p-2 border border-gray-300 rounded text-black"
                         />
                     </div>
