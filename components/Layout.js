@@ -1,41 +1,37 @@
-// components/Layout.js
 import Link from 'next/link'
-import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa'
+import { FaInstagram, FaYoutube, FaTiktok } from 'react-icons/fa'
 
 export default function Layout({ children }) {
   return (
     <div className="min-h-screen flex flex-col bg-background-dark text-text-primary">
       <header className="site-header">
-        <div className="container mx-auto px-4 py-6 relative z-10">
-          <div className="flex justify-between items-center">
-            <div className="flex space-x-4">
-              <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition duration-300">
-                <FaFacebookF size={24} />
+        <div className="container mx-auto px-4 py-4 md:py-6 relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="flex space-x-4 mb-4 md:mb-0">
+              <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition duration-300">
+                <FaInstagram size={20} />
               </Link>
-              <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition duration-300">
-                <FaTwitter size={24} />
+              <Link href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition duration-300">
+                <FaYoutube size={20} />
               </Link>
-              <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition duration-300">
-                <FaInstagram size={24} />
-              </Link>
-              <Link href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition duration-300">
-                <FaYoutube size={24} />
+              <Link href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition duration-300">
+                <FaTiktok size={20} />
               </Link>
             </div>
-            <h1 className="site-title">
+            <h1 className="site-title text-2xl md:text-4xl mb-4 md:mb-0">
               Something About Music
             </h1>
-            <div className="w-24"></div>
+            <div className="w-24 hidden md:block"></div>
           </div>
         </div>
-        <nav className="bg-gray-900 text-white py-4 relative z-10">
+        <nav className="bg-gray-900 text-white py-2 md:py-4 relative z-10">
           <div className="container mx-auto px-4">
-            <ul className="flex justify-center space-x-8">
-              <li><Link href="/" className="nav-link">HOME</Link></li>
-              <li><Link href="/reviews" className="nav-link">REVIEWS</Link></li>
-              <li><Link href="/playlists" className="nav-link">PLAYLISTS</Link></li>
-              <li><Link href="/gallery" className="nav-link">GALLERY</Link></li>
-              <li><Link href="/about" className="nav-link">ABOUT</Link></li>
+            <ul className="flex flex-wrap justify-center space-x-2 md:space-x-8">
+              <li><Link href="/" className="nav-link text-sm md:text-base py-1 px-2 md:px-3">HOME</Link></li>
+              <li><Link href="/reviews" className="nav-link text-sm md:text-base py-1 px-2 md:px-3">REVIEWS</Link></li>
+              <li><Link href="/playlists" className="nav-link text-sm md:text-base py-1 px-2 md:px-3">PLAYLISTS</Link></li>
+              <li><Link href="/gallery" className="nav-link text-sm md:text-base py-1 px-2 md:px-3">GALLERY</Link></li>
+              <li><Link href="/about" className="nav-link text-sm md:text-base py-1 px-2 md:px-3">ABOUT</Link></li>
             </ul>
           </div>
         </nav>
@@ -45,8 +41,8 @@ export default function Layout({ children }) {
         {children}
       </main>
 
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="container mx-auto px-4 text-center">
+      <footer className="bg-gray-900 text-white py-6 md:py-8">
+        <div className="container mx-auto px-4 text-center text-sm md:text-base">
           <p>&copy; 2024 Something About Music. All rights reserved.</p>
         </div>
       </footer>

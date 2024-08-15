@@ -12,26 +12,26 @@ export default function Home({ featuredReview, recentReviews }) {
       </Head>
 
       <main className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold mb-8 text-red-600">Featured Review</h1>
+        <h1 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-red-600">Featured Review</h1>
         
         {featuredReview && (
-          <Link href={`/posts/${featuredReview.slug}`} className="block mb-12">
+          <Link href={`/posts/${featuredReview.slug}`} className="block mb-8 md:mb-12">
             <div className="bg-gray-900 rounded-lg overflow-hidden hover:shadow-lg transition duration-300 border border-red-600 hover:border-red-400">
-              <div className="flex p-4">
-                <div className="w-1/6 pr-4">
+              <div className="flex flex-col md:flex-row p-4">
+                <div className="w-full md:w-1/6 mb-4 md:mb-0 md:pr-4">
                   <Image 
                     src={`/images/${featuredReview.coverImage}`}
                     alt={featuredReview.title || 'Album cover'}
                     width={150}
                     height={150}
-                    style={{objectFit: "cover"}}
-                    className="rounded w-full h-full"
+                    layout="responsive"
+                    className="rounded"
                   />
                 </div>
-                <div className="w-2/3 flex flex-col justify-between">
+                <div className="w-full md:w-2/3 flex flex-col justify-between">
                   <div>
-                    <h2 className="text-2xl font-semibold mb-2 text-red-500">{featuredReview.title}</h2>
-                    <p className="text-yellow-500 text-xl mb-2">{featuredReview.rating}/10</p>
+                    <h2 className="text-xl md:text-2xl font-semibold mb-2 text-red-500">{featuredReview.title}</h2>
+                    <p className="text-yellow-500 text-lg md:text-xl mb-2">{featuredReview.rating}/10</p>
                     <p className="text-gray-400 text-sm mb-2">Released: {featuredReview.releaseDate || 'N/A'}</p>
                     <p className="text-gray-300 text-sm mb-3 line-clamp-2">{featuredReview.excerpt}</p>
                     <div className="flex flex-wrap gap-2 mb-3">
@@ -51,10 +51,10 @@ export default function Home({ featuredReview, recentReviews }) {
           </Link>
         )}
 
-        <h2 className="text-3xl font-bold mb-6 text-red-600">Recent Reviews</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-red-600">Recent Reviews</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          {recentReviews.map((post) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-8">
+          {recentReviews && recentReviews.map((post) => (
             <Link key={post.slug} href={`/posts/${post.slug}`} className="block">
               <div className="bg-gray-900 rounded-lg overflow-hidden hover:shadow-lg transition duration-300 border border-red-600 hover:border-red-400 h-full">
                 <div className="flex p-4 h-full">
@@ -62,27 +62,27 @@ export default function Home({ featuredReview, recentReviews }) {
                     <Image 
                       src={`/images/${post.coverImage}`}
                       alt={post.title || 'Album cover'}
-                      width={150}
-                      height={150}
-                      style={{objectFit: "cover"}}
-                      className="rounded w-full h-full"
+                      width={100}
+                      height={100}
+                      layout="responsive"
+                      className="rounded"
                     />
                   </div>
                   <div className="w-2/3 flex flex-col justify-between">
                     <div>
-                      <h3 className="text-xl font-semibold mb-1 text-red-500">{post.title}</h3>
-                      <p className="text-yellow-500 text-lg mb-1">{post.rating}/10</p>
-                      <p className="text-gray-400 text-sm mb-2">Released: {post.releaseDate || 'N/A'}</p>
-                      <p className="text-gray-300 text-sm mb-2 line-clamp-2">{post.excerpt}</p>
+                      <h3 className="text-lg md:text-xl font-semibold mb-1 text-red-500">{post.title}</h3>
+                      <p className="text-yellow-500 text-base md:text-lg mb-1">{post.rating}/10</p>
+                      <p className="text-gray-400 text-xs md:text-sm mb-2">Released: {post.releaseDate || 'N/A'}</p>
+                      <p className="text-gray-300 text-xs md:text-sm mb-2 line-clamp-2">{post.excerpt}</p>
                       <div className="flex flex-wrap gap-1 mb-2">
                         {Array.isArray(post.genres) && post.genres.map(genre => (
-                          <span key={genre} className="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded">
+                          <span key={genre} className="text-xs bg-gray-700 text-gray-300 px-1 py-0.5 rounded">
                             {genre}
                           </span>
                         ))}
                       </div>
                     </div>
-                    <span className="text-red-500 hover:text-red-400 transition duration-300 text-sm">
+                    <span className="text-red-500 hover:text-red-400 transition duration-300 text-xs md:text-sm">
                       Read Full Review
                     </span>
                   </div>
@@ -93,7 +93,7 @@ export default function Home({ featuredReview, recentReviews }) {
         </div>
 
         <div className="text-center">
-          <Link href="/reviews" className="inline-block bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition duration-300">
+          <Link href="/reviews" className="inline-block bg-red-600 text-white px-4 md:px-6 py-2 rounded text-sm md:text-base hover:bg-red-700 transition duration-300">
             View All Reviews
           </Link>
         </div>
@@ -103,15 +103,24 @@ export default function Home({ featuredReview, recentReviews }) {
 }
 
 export async function getStaticProps() {
-  const allPosts = getPosts()
-  const sortedPosts = allPosts.sort((a, b) => new Date(b.date) - new Date(a.date))
-  const featuredReview = sortedPosts[0]
-  const recentReviews = sortedPosts.slice(1, 7)
+  try {
+    const allPosts = await getPosts()
+    const featuredReview = allPosts[0] || null
+    const recentReviews = allPosts.slice(1, 7) || []
 
-  return {
-    props: {
-      featuredReview,
-      recentReviews,
-    },
+    return {
+      props: {
+        featuredReview: featuredReview ? JSON.parse(JSON.stringify(featuredReview)) : null,
+        recentReviews: JSON.parse(JSON.stringify(recentReviews)),
+      },
+    }
+  } catch (error) {
+    console.error('Error in getStaticProps:', error)
+    return {
+      props: {
+        featuredReview: null,
+        recentReviews: [],
+      },
+    }
   }
 }
