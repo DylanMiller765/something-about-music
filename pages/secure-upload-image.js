@@ -16,9 +16,16 @@ export default function SecureUploadImage() {
   useEffect(() => {
     if (router.isReady) {
       const urlToken = router.query.token;
-      if (urlToken === publicRuntimeConfig.NEXT_PUBLIC_SECURE_POST_TOKEN) {
+      const isLocalhost = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+      
+      if (isLocalhost) {
+        console.log("Running on localhost, bypassing token check");
+        setIsAuthorized(true);
+      } else if (urlToken === publicRuntimeConfig.NEXT_PUBLIC_SECURE_POST_TOKEN) {
+        console.log("Tokens match, setting authorized to true");
         setIsAuthorized(true);
       } else {
+        console.log("Not authorized");
         setIsAuthorized(false);
         router.push('/');
       }

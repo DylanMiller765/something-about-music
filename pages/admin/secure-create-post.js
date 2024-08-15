@@ -26,13 +26,16 @@ export default function SecureCreatePost() {
     useEffect(() => {
         if (router.isReady) {
             const urlToken = router.query.token
-            console.log("URL Token:", urlToken)
-            console.log("ENV Token:", publicRuntimeConfig.NEXT_PUBLIC_SECURE_POST_TOKEN)
-            if (urlToken === publicRuntimeConfig.NEXT_PUBLIC_SECURE_POST_TOKEN) {
+            const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            
+            if (isLocalhost) {
+                console.log("Running on localhost, bypassing token check")
+                setIsAuthorized(true)
+            } else if (urlToken === publicRuntimeConfig.NEXT_PUBLIC_SECURE_POST_TOKEN) {
                 console.log("Tokens match, setting authorized to true")
                 setIsAuthorized(true)
             } else {
-                console.log("Tokens do not match, setting authorized to false")
+                console.log("Not authorized")
                 setIsAuthorized(false)
                 router.push('/')
             }
