@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import getConfig from 'next/config';
+import Image from 'next/image';
 
 const { publicRuntimeConfig } = getConfig();
 

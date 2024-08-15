@@ -20,8 +20,10 @@ export default function Gallery({ images }) {
                 alt={`Gallery image ${index + 1}`}
                 layout="fill"
                 objectFit="cover"
+                quality={100}
+                priority={index < 4}  // Prioritize the first few images
                 className="rounded-lg"
-              />
+             />
             </div>
           ))}
         </div>

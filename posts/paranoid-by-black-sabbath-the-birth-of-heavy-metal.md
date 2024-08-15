@@ -4,7 +4,7 @@ releaseDate: 'September 18, 1970'
 label: 'Vertigo Records'
 date: '2024-08-14'
 excerpt: 'Paranoid, the seminal album by Black Sabbath, marks a defining moment in the history of heavy metal. With iconic tracks like "Iron Man" and "War Pigs," this 1970 release captured the angst and rebellious spirit of its time, setting the stage for countless bands to follow.'
-coverImage: 'paranoid-by-black-sabbath-the-birth-of-heavy-metal.jfif'
+coverImage: 'paranoid.jpg'
 rating: 9.5
 genres: ["Heavy Metal","Hard Rock"]
 spotifyUri: 'spotify:album:6r7LZXAVueS5DqdrvXJJK7'

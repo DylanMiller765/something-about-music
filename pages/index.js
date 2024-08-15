@@ -11,8 +11,8 @@ export default function Home({ featuredReview, recentReviews }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="container mx-auto px-4">
-        <h1 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-red-600">Featured Review</h1>
+      <main className="container mx-auto px-4 py-6 md:py-8">
+      <h1 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-red-600">Featured Reviews</h1>
         
         {featuredReview && (
           <Link href={`/posts/${featuredReview.slug}`} className="block mb-8 md:mb-12">

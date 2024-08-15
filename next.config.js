@@ -8,6 +8,10 @@
                 protocol: 'http',
                 hostname: 'localhost',
             },
+            {
+                protocol: 'https',
+                hostname: 'somethingaboutmusic.blog',
+            },
         ],
         formats: ['image/webp'],
         domains: ['localhost'], // Add this line to allow optimization for local images
