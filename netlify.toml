@@ -8,7 +8,46 @@
 [functions]
   directory = "netlify/functions"
 
+# Redirect domain aliases to primary domain
+[[redirects]]
+  from = "https://somethingaboutmusic.blog/*"
+  to = "https://www.somethingaboutmusic.blog/:splat"
+  status = 301
+  force = true
+
+# Redirect default Netlify subdomain to primary domain
+[[redirects]]
+  from = "https://somethingaboutmusic.netlify.app/*"
+  to = "https://www.somethingaboutmusic.blog/:splat"
+  status = 301
+  force = true
+
+# Force HTTPS
+[[redirects]]
+  from = "http://*"
+  to = "https://:splat"
+  status = 301
+  force = true
+
+# Handle Next.js client-side routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[build.environment]
+  NEXT_USE_NETLIFY_EDGE = "true"
+
+# Enable Netlify asset optimization
+[build.processing]
+  skip_processing = false
+[build.processing.css]
+  bundle = true
+  minify = true
+[build.processing.js]
+  bundle = true
+  minify = true
+[build.processing.html]
+  pretty_urls = true
+[build.processing.images]
+  compress = true
