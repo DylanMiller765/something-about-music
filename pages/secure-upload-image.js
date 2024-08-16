@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import getConfig from 'next/config';
 import Image from 'next/image';
-
-const { publicRuntimeConfig } = getConfig();
 
 export default function SecureUploadImage() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -16,12 +13,17 @@ export default function SecureUploadImage() {
   useEffect(() => {
     if (router.isReady) {
       const urlToken = router.query.token;
+      const envToken = process.env.NEXT_PUBLIC_SECURE_POST_TOKEN;
       const isLocalhost = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
       
+      console.log("URL Token:", urlToken);
+      console.log("Environment Token:", envToken);
+      console.log("Is Localhost:", isLocalhost);
+
       if (isLocalhost) {
         console.log("Running on localhost, bypassing token check");
         setIsAuthorized(true);
-      } else if (urlToken === publicRuntimeConfig.NEXT_PUBLIC_SECURE_POST_TOKEN) {
+      } else if (urlToken === envToken) {
         console.log("Tokens match, setting authorized to true");
         setIsAuthorized(true);
       } else {
@@ -51,7 +53,7 @@ export default function SecureUploadImage() {
       const response = await fetch('/api/upload-image', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${publicRuntimeConfig.NEXT_PUBLIC_SECURE_POST_TOKEN}`
+          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_SECURE_POST_TOKEN}`
         },
         body: formData,
       });
