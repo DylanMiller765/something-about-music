@@ -5,21 +5,21 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Redirect domain aliases to primary domain
+# Redirect www to non-www
 [[redirects]]
-  from = "https://somethingaboutmusic.blog/*"
-  to = "https://www.somethingaboutmusic.blog/:splat"
+  from = "https://www.somethingaboutmusic.blog/*"
+  to = "https://somethingaboutmusic.blog/:splat"
   status = 301
   force = true
 
-# Redirect default Netlify subdomain to primary domain
+# Redirect Netlify subdomain to primary domain
 [[redirects]]
   from = "https://somethingaboutmusic.netlify.app/*"
-  to = "https://www.somethingaboutmusic.blog/:splat"
+  to = "https://somethingaboutmusic.blog/:splat"
   status = 301
   force = true
 
-# Handle static file routing
+# SPA fallback
 [[redirects]]
   from = "/*"
   to = "/index.html"
