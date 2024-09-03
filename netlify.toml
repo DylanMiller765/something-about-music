@@ -1,12 +1,9 @@
 [build]
   command = "npm run build"
-  publish = ".next"
+  publish = "out"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-[functions]
-  directory = "netlify/functions"
 
 # Redirect domain aliases to primary domain
 [[redirects]]
@@ -21,3 +18,9 @@
   to = "https://www.somethingaboutmusic.blog/:splat"
   status = 301
   force = true
+
+# Handle static file routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
