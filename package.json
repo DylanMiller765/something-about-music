@@ -9,7 +9,7 @@
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
-    "build": "next build && next export"
+    "build": "next build"
   },
   "keywords": [],
   "author": "",
@@ -34,7 +34,7 @@
     "@netlify/plugin-nextjs": "^4.0.0"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^5.6.0",
+    "@netlify/plugin-nextjs": "^5.7.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.13",
     "autoprefixer": "^10.4.20",

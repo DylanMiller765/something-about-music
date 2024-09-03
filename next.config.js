@@ -15,7 +15,6 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_SECURE_POST_TOKEN: process.env.NEXT_PUBLIC_SECURE_POST_TOKEN,
   },
-  // Custom webpack config for Netlify
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
@@ -25,7 +24,6 @@ const nextConfig = {
     }
     return config;
   },
-  // Disable server-side rendering for static export
   trailingSlash: true,
 };
 
