@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import Layout from '../../components/Layout'
+import Layout from '../components/Layout'
 import getConfig from 'next/config'
 
 const { publicRuntimeConfig } = getConfig()
