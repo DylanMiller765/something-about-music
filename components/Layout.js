@@ -8,13 +8,10 @@ export default function Layout({ children }) {
         <div className="container mx-auto px-4 py-4 md:py-6 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex space-x-4 mb-4 md:mb-0">
-              <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition duration-300">
+              <Link href="https://www.instagram.com/emiillliie/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition duration-300">
                 <FaInstagram size={20} />
               </Link>
-              <Link href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition duration-300">
-                <FaYoutube size={20} />
-              </Link>
-              <Link href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition duration-300">
+              <Link href="https://www.tiktok.com/@musicsn0b" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition duration-300">
                 <FaTiktok size={20} />
               </Link>
             </div>
