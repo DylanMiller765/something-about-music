@@ -8,7 +8,7 @@ spotifyUri: 'spotify:album:1xmzPFLf2gjDF0D8OQJyAo'
 
 ---
 We met too soon, too young, too fast,
-two hearts that beay, but could not last.
+two hearts that beat, but could not last.
 A fire ignited in the dark
 But it was doomed from the very start.
 
@@ -78,25 +78,23 @@ when hearts have healed and love has folded.
 We'll cross paths again, with wiser eyes,
 And meet as straners with no disguise.
 
-But if this chapter is where we part
-I'll carry you with a heavy heart.
-Not bitter, no, but bruised and worn,
-A love was once bright, now tattered, torn.
+But if this is where our story ends,
+I’ll carry you still, my once-loved friend.
+Not bitter, but worn, bruised yet whole,
+For love has etched its mark on my soul.
 
 I wish you peace, I wish you grace,
-A future filled with some warm embrace/
-And if we never meet again ,
-I pray you find your way, my friend.
+A life adorned with warm embrace.
+And if our paths don’t cross once more,
+I hope you find what you’re searching for.
 
-For what we had, though lost in time,
-was pure, was real, was truly mine.
-But life doesn't pause for loves sweet cry,
-It keeps on moving, and we must try
-To heal the wounds to let it go,
-To find our way in the ebb and flow.
+For what we had was fleeting, true,
+A fragile flame the winds once knew.
+Life moves forward; it won’t stand still,
+And healing comes with time and will.
 
-So here's to us, to what we knew,
-To love so bright,, yet so askew,
-We were too young, too quick, too fast
-A fleeting dream that couldn't last
+So here’s to us, to the love we knew,
+To moments bright but askew.
+We were too young, too wild, too fast—
+A fleeting dream that couldn’t last.
 
